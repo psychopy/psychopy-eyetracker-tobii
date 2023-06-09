@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "psychopy-eyetracker-tobii"
-version = "0.0.21"
+version = "0.0.1"
 description = "Extension package for PsychoPy which adds support for Tobii eyetrackers."
 readme = "README.md"
 requires-python = ">= 3.7"
@@ -31,3 +31,5 @@ urls.repository = "https://github.com/psychopy/psychopy-eyetracker-tobii"
 dependencies = [
     "tobiiresearch"
 ]
+[tool.setuptools.packages.find]
+where = ["", "psychopy_eyetracker_tobii",]
