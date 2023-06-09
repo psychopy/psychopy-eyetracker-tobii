@@ -29,7 +29,7 @@ urls.changelog = "https://github.com/psychopy/psychopy-eyetracker-tobii/blob/mai
 urls.documentation = "https://pages.github.com/psychopy/psychopy-eyetracker-tobii"
 urls.repository = "https://github.com/psychopy/psychopy-eyetracker-tobii"
 dependencies = [
-    "tobiiresearch"
+    "tobii_research"
 ]
 [tool.setuptools.packages.find]
 where = ["", "psychopy_eyetracker_tobii",]
