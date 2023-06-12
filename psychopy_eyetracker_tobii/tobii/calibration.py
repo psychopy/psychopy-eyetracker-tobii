@@ -6,7 +6,7 @@
 from psychopy.iohub.devices.eyetracker.calibration import BaseCalibrationProcedure
 from collections import OrderedDict
 from psychopy import visual
-from psychopy.constants import EventConstants
+from psychopy.iohub.constants import EventConstants
 import gevent
 
 
