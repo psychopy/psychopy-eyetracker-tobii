@@ -10,8 +10,9 @@ readme = "README.md"
 requires-python = ">= 3.7"
 license = {text = "GNU General Public License v3 (GPLv3)"}
 authors = [
-  { name = "Jon Peirce", email = "jon@opensceincetools.org" },
+  { name = "Sol Simpson", email = "info@isolver-software.com" },
   { name = "Matthew Cutone", email = "mcutone@opensceincetools.org" },
+  { name = "Jon Peirce", email = "jon@opensceincetools.org" },
 ]
 classifiers = [
   "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
@@ -33,3 +34,6 @@ dependencies = [
 ]
 [tool.setuptools.packages.find]
 where = ["", "psychopy_eyetracker_tobii",]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml"]
