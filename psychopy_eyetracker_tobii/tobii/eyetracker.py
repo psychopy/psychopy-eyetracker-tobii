@@ -212,7 +212,7 @@ class EyeTracker(EyeTrackerDevice):
 
             genv.window.close()
 
-            genv._unregisterEventMonitors()
+            # genv._unregisterEventMonitors()
             genv.clearAllEventBuffers()
 
             return calibration_result
