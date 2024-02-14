@@ -1,0 +1,7 @@
+v0.0.2
+------
+- Removed `_unregisterEventMonitors` causing lockup on calibration.
+
+v0.0.1
+------
+- Initial release.
