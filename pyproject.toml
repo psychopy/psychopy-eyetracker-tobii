@@ -38,5 +38,8 @@ where = ["", "psychopy_eyetracker_tobii",]
 [project.entry-points."psychopy.iohub.devices"]
 TobiiEyeTracker = "psychopy_eyetracker_tobii.tobii.eyetracker:EyeTracker"
 
+[project.entry-points."psychopy.iohub.devices.eyetracker"]
+TobiiEyeTracker = "psychopy_eyetracker_tobii.tobii.eyetracker:EyeTracker"
+
 [tool.setuptools.package-data]
 "*" = ["*.yaml"]
