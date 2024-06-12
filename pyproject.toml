@@ -32,14 +32,28 @@ urls.repository = "https://github.com/psychopy/psychopy-eyetracker-tobii"
 dependencies = [
     "tobii_research"
 ]
+
+[project.optional-dependencies]
+# dependencies for building the docs
+docs = [
+  "psychopy",
+  "sphinx",
+  "furo",
+]
+# dependencies for running the test suite
+tests = [
+  "psychopy",
+  "pytest",
+]
+
 [tool.setuptools.packages.find]
 where = ["", "psychopy_eyetracker_tobii",]
 
 [project.entry-points."psychopy.iohub.devices"]
-TobiiEyeTracker = "psychopy_eyetracker_tobii.tobii.eyetracker:EyeTracker"
+EyeTracker = "psychopy_eyetracker_tobii.tobii.eyetracker:EyeTracker"
 
 [project.entry-points."psychopy.iohub.devices.eyetracker"]
-TobiiEyeTracker = "psychopy_eyetracker_tobii.tobii.eyetracker:EyeTracker"
+EyeTracker = "psychopy_eyetracker_tobii.tobii.eyetracker:EyeTracker"
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml"]
