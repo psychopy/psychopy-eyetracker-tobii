@@ -120,6 +120,31 @@ class EyeTracker(EyeTrackerDevice):
 
         self._latest_sample = None
         self._latest_gaze_position = None
+      
+    @staticmethod
+    def getCalibrationDict(calib):
+        """
+        Create a dict describing the given Calibration object, respecting this 
+        eyetracker's specific limitations.
+
+        Parameters
+        ----------
+        calib : psychopy.hardware.eyetracker.EyetrackerCalibration
+            Object to create a dict from
+        
+        Returns
+        -------
+        dict
+            Dict describing the given Calibration object
+        """
+        # call base function
+        asDict = EyeTrackerDevice.getCalibrationDict(calib)
+        # add tobii-specific attributes
+        asDict['target_delay'] = calib.targetDelay
+        asDict['target_duration'] = calib.targetDur
+        asDict['pacing_speed'] = calib.targetDelay
+
+        return asDict
 
     def trackerTime(self):
         """Current eye tracker time in the eye tracker's native time base. The
