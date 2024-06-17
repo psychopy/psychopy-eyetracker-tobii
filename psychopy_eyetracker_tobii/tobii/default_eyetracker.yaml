@@ -1,4 +1,4 @@
-eyetracker.hw.tobii.EyeTracker:
+eyetracker.tobii.EyeTracker:
     # Indicates if the device should actually be loaded at experiment runtime.
     enable: True
 
