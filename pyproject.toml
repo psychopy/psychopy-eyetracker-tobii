@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "psychopy-eyetracker-tobii"
-version = "0.0.2"
+version = "0.0.3"
 description = "Extension package for PsychoPy which adds support for Tobii eyetrackers to ioHub."
 readme = "README.md"
 requires-python = ">= 3.7"
@@ -51,6 +51,9 @@ where = ["", "psychopy_eyetracker_tobii",]
 
 [project.entry-points."psychopy.iohub.devices.eyetracker"]
 tobii = "psychopy_eyetracker_tobii.tobii"
+
+[project.entry-points."psychopy.experiment.components.settings.eyetracking"]
+TobiiEyetrackerBackend = "psychopy_eyetracker_tobii.tobii.settings.TobiiEyetrackerBackend"
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml"]
