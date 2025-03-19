@@ -6,7 +6,7 @@ from psychopy.experiment.components.settings.eyetracking import EyetrackerBacken
 class TobiiEyetrackerBackend(EyetrackerBackend):
     """Experiment settings for Tobii eyetrackers.
     """
-    label = 'Tobii Technology'
+    label = 'Tobii Technology (iohub)'
     key = 'eyetracker.hw.tobii.EyeTracker'
 
     needsFullscreen = False
