@@ -53,7 +53,7 @@ where = ["", "psychopy_eyetracker_tobii",]
 tobii = "psychopy_eyetracker_tobii.tobii"
 
 [project.entry-points."psychopy.experiment.components.settings.eyetracking"]
-TobiiEyetrackerBackend = "psychopy_eyetracker_tobii.tobii.settings.TobiiEyetrackerBackend"
+TobiiEyetrackerBackend = "psychopy_eyetracker_tobii.tobii.settings:TobiiEyetrackerBackend"
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml"]
