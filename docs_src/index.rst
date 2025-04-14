@@ -2,7 +2,7 @@
 Welcome to psychopy-eyetracker-tobii's documentation!
 =======================================================
 
-The `psychopy-eyetracker-tobii` plugin is designed to show you how to make a plugin.
+The `psychopy-eyetracker-tobii` plugin adds Tobii to the supported eyetracker devices in ioHub..
 
 .. toctree::
    :maxdepth: 1
