@@ -28,12 +28,12 @@ class TobiiTracker():
         self._eyetracker = None
         retry_count = 10
         trackers = []
-        while len(trackers)==0 or retry_count > 0:
+        while len(trackers)==0 and retry_count > 0:
             trackers = tobii_research.find_all_eyetrackers()
             retry_count = retry_count - 1
 
         if len(trackers)==0:
-            raise RuntimeError('Could detect any Tobii devices.')
+            raise RuntimeError('Could not detect any Tobii devices.')
             
         if serial_number or model:
             for et in trackers:
