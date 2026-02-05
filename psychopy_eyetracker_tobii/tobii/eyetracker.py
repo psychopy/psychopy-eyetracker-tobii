@@ -455,8 +455,8 @@ class EyeTracker(EyeTrackerDevice):
             else:
                 status += 2                
 
-            right_gx, right_gy, right_gz = eye_data_event['right_gaze_origin_in_trackbox_coordinate_system']
-            left_gx, left_gy, left_gz = eye_data_event['left_gaze_origin_in_trackbox_coordinate_system']
+            right_gx, right_gy, right_gz = eye_data_event['right_gaze_origin_in_user_coordinate_system']
+            left_gx, left_gy, left_gz = eye_data_event['left_gaze_origin_in_user_coordinate_system']
 
             confidenceInterval = 0.0
             binocSample = [
