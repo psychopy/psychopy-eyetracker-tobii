@@ -6,7 +6,7 @@
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
-project = 'PsychoPy Example Plugin'
+project = 'PsychoPy Eyetracker SR Research Plugin'
 copyright = '2024, Open Science Tools Ltd.'
 author = 'Open Science Tools Ltd.'
 release = '0.0.0'
@@ -29,12 +29,8 @@ extensions = [
     'sphinx.ext.viewcode'
 ]
 
-html_static_path = ["static"]
-
-
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme_path = ["themes"]
-html_theme = 'psychopy_plugin'
+html_theme = 'psychopy'
