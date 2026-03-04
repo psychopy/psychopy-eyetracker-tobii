@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>psychopy_eyetracker_tobii.tobii.eyetracker &#8212; PsychoPy Eyetracker SR Research Plugin 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=536c50fe" />
+    <link rel="stylesheet" type="text/css" href="../../../../_static/psychopy.css?v=6c31395e" />
+    <script src="../../../../_static/documentation_options.js?v=d20be8f5"></script>
+    <script src="../../../../_static/doctools.js?v=b682be12"></script>
+    <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../../../_static/js/jquery-fix.js"></script>
+    <script src="../../../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex/" />
+    <link rel="search" title="Search" href="../../../../search/" />
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-96LHQFPY1F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-96LHQFPY1F');
+    </script>
+
+    <!-- News reel -->
+     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // get all news reels
+        for (let reel of document.getElementsByClassName("news-reel")) {
+          // get all cards
+          let cards = Array.from(reel.getElementsByClassName("sd-card"))
+          // start off with the first card
+          reel.showItem = 0;
+          // define function to show the next node
+          let update = () => {
+            for (let item of cards) {
+              // get index
+              let index = cards.indexOf(item);
+              // show/hide according to index match
+              if (index === reel.showItem) {
+                console.log("Showing news item:", item)
+                item.style.display = "block";
+              } else {
+                item.style.display = "none";
+              }
+            }
+            // iterate shown index
+            reel.showItem += 1;
+            if (reel.showItem >= cards.length) {
+              reel.showItem -= cards.length;
+            }
+          }
+          // run once now
+          update()
+          // schedule to run every 5s
+          window.setInterval(update, 5000);
+        }
+      }, false);    
+     </script>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.psychopy.org"]);
+      _paq.push(["setDomains", ["*.psychopy.org","*.discourse.psychopy.org"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//analytics.opensciencetools.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '3']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//analytics.opensciencetools.org/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Matomo Code -->
+
+
+  </head><body>
+  
+    <!-- nav bar -->
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top" height="65px">
+    <div class="container">
+      <!-- brand logo -->
+      <a class="navbar-brand" href="../../../../">
+        
+        <img src="../../../../_static/navbar_plugin.png" alt="PsychoPy Logo">
+        
+      </a>
+      <!-- gap between logo and links -->
+      <div style="flex-grow: 1;"></div>
+      <!-- nav links -->
+      <div class="collapse navbar-collapse nav-collapse w-100 pull-right">
+        <ul class="nav navbar-nav ml-auto">
+          
+          
+            
+<!-- insert a regular link -->
+<li>
+    <a href="../../../../download/">
+        Install
+    </a>
+</li>
+
+
+          
+          
+          
+          <li><a href="https://plugins.psychopy.org/directory.html" class="return-btn">plugins.psychopy.org</a></li>
+          
+        </ul>
+      </div>
+      <!-- shown when screen is too small for full links, clicking it toggles links shown -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+  </div>
+
+<!--
+
+   -->
+
+<!-- social media icon bar -->
+
+<div class="social-bar">
+
+<a href="https://github.com/psychopy/psychopy" class="github">
+    <i class="fab fa-github"></i>
+</a>
+
+<a href="https://bsky.app/profile/psychopy.org" class="bluesky">
+    <i class="fab fa-bluesky"></i>
+</a>
+
+<a href="https://www.youtube.com/watch?v=VV6qhuQgsiI&list=PLFB5A1BE51964D587" class="youtube">
+    <i class="fab fa-youtube"></i>
+</a>
+
+<a href="https://www.facebook.com/PsychoPy/" class="facebook">
+    <i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://www.linkedin.com/company/open-science-tools" class="linkedin">
+    <i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://twitter.com/psychopy" class="twitter">
+    <i class="fab fa-x-twitter"></i>
+</a>
+
+</div>
+
+  
+
+<main>
+  
+  <h1>Source code for psychopy_eyetracker_tobii.tobii.eyetracker</h1><div class="highlight"><pre>
+<span></span><span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># Part of the PsychoPy library</span>
+<span class="c1"># Copyright (C) 2012-2020 iSolver Software Solutions (C) 2021 Open Science Tools Ltd.</span>
+<span class="c1"># Distributed under the terms of the GNU General Public License (GPL).</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.iohub.constants</span><span class="w"> </span><span class="kn">import</span> <span class="n">EventConstants</span><span class="p">,</span> <span class="n">EyeTrackerConstants</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.iohub.devices</span><span class="w"> </span><span class="kn">import</span> <span class="n">Computer</span><span class="p">,</span> <span class="n">Device</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.iohub.devices.eyetracker</span><span class="w"> </span><span class="kn">import</span> <span class="n">EyeTrackerDevice</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.calibration</span><span class="w"> </span><span class="kn">import</span> <span class="n">TobiiCalibrationProcedure</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.iohub.devices.eyetracker.eye_events</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.iohub.errors</span><span class="w"> </span><span class="kn">import</span> <span class="n">print2err</span><span class="p">,</span> <span class="n">printExceptionDetailsToStdErr</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.tobiiwrapper</span><span class="w"> </span><span class="kn">import</span> <span class="n">TobiiTracker</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="n">print2err</span><span class="p">(</span><span class="s1">&#39;Error importing tobiiwrapper.TobiiTracker&#39;</span><span class="p">)</span>
+    <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="EyeTracker">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EyeTracker</span><span class="p">(</span><span class="n">EyeTrackerDevice</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    To start iohub with a Tobii eye tracker device, add the Tobii</span>
+<span class="sd">    device to the dictionary passed to launchHubServer or the </span>
+<span class="sd">    experiment&#39;s iohub_config.yaml::</span>
+
+<span class="sd">        eyetracker.hw.tobii.EyeTracker</span>
+<span class="sd">        </span>
+<span class="sd">    Examples:</span>
+<span class="sd">        A. Start ioHub with a Tobii device and run tracker calibration::</span>
+<span class="sd">    </span>
+<span class="sd">            from psychopy.iohub import launchHubServer</span>
+<span class="sd">            from psychopy.core import getTime, wait</span>
+
+<span class="sd">            iohub_config = {&#39;eyetracker.hw.tobii.EyeTracker&#39;:</span>
+<span class="sd">                {&#39;name&#39;: &#39;tracker&#39;, &#39;runtime_settings&#39;: {&#39;sampling_rate&#39;: 120}}}</span>
+<span class="sd">                </span>
+<span class="sd">            io = launchHubServer(**iohub_config)</span>
+<span class="sd">            </span>
+<span class="sd">            # Get the eye tracker device.</span>
+<span class="sd">            tracker = io.devices.tracker</span>
+<span class="sd">                            </span>
+<span class="sd">            # run eyetracker calibration</span>
+<span class="sd">            r = tracker.runSetupProcedure()</span>
+<span class="sd">            </span>
+<span class="sd">        B. Print all eye tracker events received for 2 seconds::</span>
+<span class="sd">                        </span>
+<span class="sd">            # Check for and print any eye tracker events received...</span>
+<span class="sd">            tracker.setRecordingState(True)</span>
+<span class="sd">            </span>
+<span class="sd">            stime = getTime()</span>
+<span class="sd">            while getTime()-stime &lt; 2.0:</span>
+<span class="sd">                for e in tracker.getEvents():</span>
+<span class="sd">                    print(e)</span>
+<span class="sd">            </span>
+<span class="sd">        C. Print current eye position for 5 seconds::</span>
+<span class="sd">                        </span>
+<span class="sd">            # Check for and print current eye position every 100 msec.</span>
+<span class="sd">            stime = getTime()</span>
+<span class="sd">            while getTime()-stime &lt; 5.0:</span>
+<span class="sd">                print(tracker.getPosition())</span>
+<span class="sd">                wait(0.1)</span>
+<span class="sd">            </span>
+<span class="sd">            tracker.setRecordingState(False)</span>
+<span class="sd">            </span>
+<span class="sd">            # Stop the ioHub Server</span>
+<span class="sd">            io.quit()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_tobii</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">DEVICE_TIMEBASE_TO_SEC</span> <span class="o">=</span> <span class="mf">0.000001</span>
+    <span class="n">EVENT_CLASS_NAMES</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;MonocularEyeSampleEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;BinocularEyeSampleEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;FixationStartEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;FixationEndEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SaccadeStartEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;SaccadeEndEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;BlinkStartEvent&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;BlinkEndEvent&#39;</span><span class="p">]</span>
+    <span class="vm">__slots__</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">EyeTrackerDevice</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">model_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_name</span>
+        <span class="n">serial_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;serial_number&#39;</span><span class="p">)</span>
+
+        <span class="n">EyeTracker</span><span class="o">.</span><span class="n">_tobii</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">EyeTracker</span><span class="o">.</span><span class="n">_tobii</span> <span class="o">=</span> <span class="n">TobiiTracker</span><span class="p">(</span><span class="n">serial_num</span><span class="p">,</span> <span class="n">model_name</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">print2err</span><span class="p">(</span><span class="s1">&#39;Error creating Tobii Device class&#39;</span><span class="p">)</span>
+            <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+
+        <span class="c1"># Apply license file if needed</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">license_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">getConfiguration</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;license_file&#39;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">license_file</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">license_file</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                    <span class="n">license</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+                    <span class="n">res</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">_eyetracker</span><span class="o">.</span><span class="n">apply_licenses</span><span class="p">(</span><span class="n">license</span><span class="p">)</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">res</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">print2err</span><span class="p">(</span><span class="s2">&quot;Successfully applied Tobii license from: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">license_file</span><span class="p">))</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="n">print2err</span><span class="p">(</span><span class="s2">&quot;Error: Failed to apply Tobii license from single key. &quot;</span>
+                                  <span class="s2">&quot;Validation result: </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">validation_result</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">print2err</span><span class="p">(</span><span class="s2">&quot;No Tobii license_file in config. Skipping.&quot;</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">print2err</span><span class="p">(</span><span class="s2">&quot;Error calling Tobii.apply_licenses with file </span><span class="si">{}</span><span class="s2">.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">license_file</span><span class="p">))</span>
+            <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+
+        <span class="n">srate</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_runtime_settings</span><span class="p">[</span><span class="s1">&#39;sampling_rate&#39;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">srate</span> <span class="ow">and</span> <span class="n">srate</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">getAvailableSamplingRates</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">setSamplingRate</span><span class="p">(</span><span class="n">srate</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_latest_sample</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span> <span class="o">=</span> <span class="kc">None</span>
+      
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getCalibrationDict</span><span class="p">(</span><span class="n">calib</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create a dict describing the given Calibration object, respecting this </span>
+<span class="sd">        eyetracker&#39;s specific limitations.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        calib : psychopy.hardware.eyetracker.EyetrackerCalibration</span>
+<span class="sd">            Object to create a dict from</span>
+<span class="sd">        </span>
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        dict</span>
+<span class="sd">            Dict describing the given Calibration object</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># call base function</span>
+        <span class="n">asDict</span> <span class="o">=</span> <span class="n">EyeTrackerDevice</span><span class="o">.</span><span class="n">getCalibrationDict</span><span class="p">(</span><span class="n">calib</span><span class="p">)</span>
+        <span class="c1"># add tobii-specific attributes</span>
+        <span class="n">asDict</span><span class="p">[</span><span class="s1">&#39;target_delay&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calib</span><span class="o">.</span><span class="n">targetDelay</span>
+        <span class="n">asDict</span><span class="p">[</span><span class="s1">&#39;target_duration&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calib</span><span class="o">.</span><span class="n">targetDur</span>
+        <span class="n">asDict</span><span class="p">[</span><span class="s1">&#39;pacing_speed&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">calib</span><span class="o">.</span><span class="n">targetDelay</span>
+
+        <span class="k">return</span> <span class="n">asDict</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">trackerTime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current eye tracker time in the eye tracker&#39;s native time base. The</span>
+<span class="sd">        Tobii system uses a usec timebase.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: current native eye tracker time. (in usec for the Tobii)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">getCurrentEyeTrackerTime</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">EYETRACKER_ERROR</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">trackerSec</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Current eye tracker time, normalized to sec.msec format.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            float: current native eye tracker time in sec.msec-usec format.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">getCurrentEyeTrackerTime</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEVICE_TIMEBASE_TO_SEC</span>
+        <span class="k">return</span> <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">EYETRACKER_ERROR</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">setConnectionState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enable</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        setConnectionState is a no-op when using the Tobii system, as the</span>
+<span class="sd">        connection is established when the Tobii EyeTracker classes are created,</span>
+<span class="sd">        and remains active until the program ends, or a error occurs resulting</span>
+<span class="sd">        in the loss of the tracker connection.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            enable (bool): True = enable the connection, False = disable the connection.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            bool: indicates the current connection state to the eye tracking hardware.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="nf">isConnected</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;isConnected returns whether the Tobii is connected to the experiment</span>
+<span class="sd">        PC and if the tracker state is valid. Returns True if the tracker can</span>
+<span class="sd">        be put into Record mode, etc and False if there is an error with the</span>
+<span class="sd">        tracker or tracker connection with the experiment PC.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            bool:  True = the eye tracking hardware is connected. False otherwise.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">sendMessage</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">message_contents</span><span class="p">,</span> <span class="n">time_offset</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The sendMessage method is not supported by the Tobii implementation</span>
+<span class="sd">        of the Common Eye Tracker Interface, as the Tobii SDK does not support</span>
+<span class="sd">        saving eye data to a native data file during recording.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">EYETRACKER_INTERFACE_METHOD_NOT_SUPPORTED</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">sendCommand</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The sendCommand method is not supported by the Tobii Common Eye</span>
+<span class="sd">        Tracker Interface.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">EYETRACKER_INTERFACE_METHOD_NOT_SUPPORTED</span>
+
+<div class="viewcode-block" id="EyeTracker.runSetupProcedure">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.runSetupProcedure">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">runSetupProcedure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calibration_args</span><span class="o">=</span><span class="p">{}):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;runSetupProcedure performs a calibration routine for the Tobii eye</span>
+<span class="sd">        tracking system.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">genv</span> <span class="o">=</span> <span class="n">TobiiCalibrationProcedure</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calibration_args</span><span class="p">)</span>
+
+            <span class="n">genv</span><span class="o">.</span><span class="n">runCalibration</span><span class="p">()</span>
+            <span class="n">calibration_result</span> <span class="o">=</span> <span class="n">genv</span><span class="o">.</span><span class="n">cal_result_dict</span>
+
+            <span class="c1"># On some graphics cards, we have to minimize before closing or the calibration window will stay visible</span>
+            <span class="c1"># after close is called.</span>
+            <span class="n">genv</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winHandle</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+            <span class="n">genv</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">winHandle</span><span class="o">.</span><span class="n">minimize</span><span class="p">()</span>
+
+            <span class="n">genv</span><span class="o">.</span><span class="n">window</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+            <span class="c1"># genv._unregisterEventMonitors()</span>
+            <span class="n">genv</span><span class="o">.</span><span class="n">clearAllEventBuffers</span><span class="p">()</span>
+
+            <span class="k">return</span> <span class="n">calibration_result</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">print2err</span><span class="p">(</span><span class="s1">&#39;Error during runSetupProcedure&#39;</span><span class="p">)</span>
+            <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">EYETRACKER_ERROR</span></div>
+
+
+<div class="viewcode-block" id="EyeTracker.enableEventReporting">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.enableEventReporting">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">enableEventReporting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;enableEventReporting is functionally identical to the eye tracker</span>
+<span class="sd">        device specific enableEventReporting method.&quot;&quot;&quot;</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">enabled</span> <span class="o">=</span> <span class="n">EyeTrackerDevice</span><span class="o">.</span><span class="n">enableEventReporting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">enabled</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">setRecordingState</span><span class="p">(</span><span class="n">enabled</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">enabled</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="n">print2err</span><span class="p">(</span><span class="s1">&#39;Error during enableEventReporting&#39;</span><span class="p">)</span>
+            <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">EYETRACKER_ERROR</span></div>
+
+
+<div class="viewcode-block" id="EyeTracker.setRecordingState">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.setRecordingState">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">setRecordingState</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">recording</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;setRecordingState is used to start or stop the recording of data</span>
+<span class="sd">        from the eye tracking device.</span>
+
+<span class="sd">        args:</span>
+<span class="sd">           recording (bool): if True, the eye tracker will start recordng available</span>
+<span class="sd">              eye data and sending it to the experiment program if data streaming</span>
+<span class="sd">              was enabled for the device. If recording == False, then the eye</span>
+<span class="sd">              tracker stops recording eye data and streaming it to the experiment.</span>
+
+<span class="sd">        If the eye tracker is already recording, and setRecordingState(True) is</span>
+<span class="sd">        called, the eye tracker will simple continue recording and the method call</span>
+<span class="sd">        is a no-op. Likewise if the system has already stopped recording and</span>
+<span class="sd">        setRecordingState(False) is called again.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            recording (bool): if True, the eye tracker will start recordng data.; false = stop recording data.</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            bool: the current recording state of the eye tracking device</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span> <span class="ow">and</span> <span class="n">recording</span> <span class="ow">is</span> <span class="kc">True</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">isRecordingEnabled</span><span class="p">():</span>
+            <span class="c1">#ioHub.print2err(&quot;Starting Tracking... &quot;)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">startTracking</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_handleNativeEvent</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">EyeTrackerDevice</span><span class="o">.</span><span class="n">enableEventReporting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span> <span class="ow">and</span> <span class="n">recording</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">isRecordingEnabled</span><span class="p">():</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">stopTracking</span><span class="p">()</span>
+            <span class="c1">#ioHub.print2err(&quot;Stopping Tracking... &quot;)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_latest_sample</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">return</span> <span class="n">EyeTrackerDevice</span><span class="o">.</span><span class="n">enableEventReporting</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">isRecordingEnabled</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="EyeTracker.isRecordingEnabled">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.isRecordingEnabled">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">isRecordingEnabled</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;isRecordingEnabled returns the recording state from the eye tracking</span>
+<span class="sd">        device.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">           None</span>
+
+<span class="sd">        Return:</span>
+<span class="sd">            bool: True == the device is recording data; False == Recording is not occurring</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">_isRecording</span>
+        <span class="k">return</span> <span class="kc">False</span></div>
+
+
+<div class="viewcode-block" id="EyeTracker.getLastSample">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getLastSample">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getLastSample</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the latest sample retrieved from the Tobii device. The Tobii</span>
+<span class="sd">        system always using the BinocularSample Event type.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: If the eye tracker is not currently recording data.</span>
+
+<span class="sd">            EyeSample: If the eye tracker is recording in a monocular tracking mode, the latest sample event of this event type is returned.</span>
+
+<span class="sd">            BinocularEyeSample:  If the eye tracker is recording in a binocular tracking mode, the latest sample event of this event type is returned.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_latest_sample</span></div>
+
+
+<div class="viewcode-block" id="EyeTracker.getLastGazePosition">
+<a class="viewcode-back" href="../../../../coder/tobii/#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getLastGazePosition">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">getLastGazePosition</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the latest 2D eye gaze position retrieved from the Tobii</span>
+<span class="sd">        device. This represents where the eye tracker is reporting each eye</span>
+<span class="sd">        gaze vector is intersecting the calibrated surface.</span>
+
+<span class="sd">        In general, the y or vertical component of each eyes gaze position should</span>
+<span class="sd">        be the same value, since in typical user populations the two eyes are</span>
+<span class="sd">        yoked vertically when they move. Therefore any difference between the</span>
+<span class="sd">        two eyes in the y dimension is likely due to eye tracker error.</span>
+
+<span class="sd">        Differences between the x, or horizontal component of the gaze position,</span>
+<span class="sd">        indicate that the participant is being reported as looking behind or</span>
+<span class="sd">        in front of the calibrated plane. When a user is looking at the</span>
+<span class="sd">        calibration surface , the x component of the two eyes gaze position should be the same.</span>
+<span class="sd">        Differences between the x value for each eye either indicates that the</span>
+<span class="sd">        user is not focussing at the calibrated depth, or that there is error in the eye data.</span>
+
+<span class="sd">        The above remarks are true for any eye tracker in general.</span>
+
+<span class="sd">        The getLastGazePosition method returns the most recent eye gaze position</span>
+<span class="sd">        retrieved from the eye tracker device. This is the position on the</span>
+<span class="sd">        calibrated 2D surface that the eye tracker is reporting as the current</span>
+<span class="sd">        eye position. The units are in the units in use by the Display device.</span>
+
+<span class="sd">        If binocular recording is being performed, the average position of both</span>
+<span class="sd">        eyes is returned.</span>
+
+<span class="sd">        If no samples have been received from the eye tracker, or the</span>
+<span class="sd">        eye tracker is not currently recording data, None is returned.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            None</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            None: If the eye tracker is not currently recording data or no eye samples have been received.</span>
+
+<span class="sd">            tuple: Latest (gaze_x,gaze_y) position of the eye(s)</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_setSamplingRate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sampling_rate</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">setSamplingRate</span><span class="p">(</span><span class="n">sampling_rate</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_poll</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The Tobii system uses a callback approach to providing new eye data</span>
+<span class="sd">        as it becomes available, so polling (and therefore this method) are not</span>
+<span class="sd">        used.&quot;&quot;&quot;</span>
+        <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_handleNativeEvent</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This method is called every time there is new eye data available</span>
+<span class="sd">        from the Tobii system, which will be roughly equal to the sampling rate</span>
+<span class="sd">        eye data is being recorded at.</span>
+
+<span class="sd">        The callback needs to return as quickly as possible so there is</span>
+<span class="sd">        no chance of overlapping calls being made to the callback.</span>
+<span class="sd">        Therefore this method simply puts the event data received from</span>
+<span class="sd">        the eye tracker device, and the local ioHub time the callback</span>
+<span class="sd">        was called, into a buffer for processing by the ioHub event</span>
+<span class="sd">        system.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">isReportingEvents</span><span class="p">():</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logged_time</span> <span class="o">=</span> <span class="n">Computer</span><span class="o">.</span><span class="n">getTime</span><span class="p">()</span>
+                <span class="n">tobii_logged_time</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">getCurrentLocalTobiiTime</span><span class="p">()</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEVICE_TIMEBASE_TO_SEC</span>
+                
+                <span class="n">eye_data_event</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                
+                <span class="n">data_delay</span> <span class="o">=</span> <span class="n">tobii_logged_time</span> <span class="o">-</span> <span class="p">(</span><span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;system_time_stamp&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">DEVICE_TIMEBASE_TO_SEC</span><span class="p">)</span>
+        
+                <span class="n">device_event_time</span> <span class="o">=</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;device_time_stamp&#39;</span><span class="p">]</span>
+                <span class="n">iohub_event_time</span> <span class="o">=</span> <span class="p">(</span><span class="n">logged_time</span> <span class="o">-</span> <span class="n">data_delay</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_addNativeEventToBuffer</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">logged_time</span><span class="p">,</span>
+                     <span class="n">device_event_time</span><span class="p">,</span>
+                     <span class="n">iohub_event_time</span><span class="p">,</span>
+                     <span class="n">data_delay</span><span class="p">,</span>
+                     <span class="n">eye_data_event</span><span class="p">))</span>
+                <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+                <span class="n">print2err</span><span class="p">(</span><span class="s1">&#39;ERROR IN _handleNativeEvent&#39;</span><span class="p">)</span>
+                <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">print2err</span><span class="p">(</span>
+                <span class="s1">&#39;self._handleNativeEvent called but isReportingEvents == false&#39;</span><span class="p">)</span>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_getIOHubEventObject</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">native_event_data</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;The _getIOHubEventObject method is called by the ioHub Server to</span>
+<span class="sd">        convert new native device event objects that have been received to the</span>
+<span class="sd">        appropriate ioHub Event type representation.</span>
+
+<span class="sd">        The Tobii ioHub eye tracker implementation uses a callback method</span>
+<span class="sd">        to register new native device events with the ioHub Server.</span>
+<span class="sd">        Therefore this method converts the native Tobii event data into</span>
+<span class="sd">        an appropriate ioHub Event representation.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            native_event_data: object or tuple of (callback_time, native_event_object)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: The appropriate ioHub Event type in list form.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">logged_time</span><span class="p">,</span> <span class="n">device_event_time</span><span class="p">,</span> <span class="n">iohub_event_time</span><span class="p">,</span> <span class="n">data_delay</span><span class="p">,</span> <span class="n">eye_data_event</span> <span class="o">=</span> <span class="n">native_event_data</span>
+
+            <span class="n">event_type</span> <span class="o">=</span> <span class="n">EventConstants</span><span class="o">.</span><span class="n">BINOCULAR_EYE_SAMPLE</span>
+    
+            <span class="n">left_gaze_x</span><span class="p">,</span> <span class="n">left_gaze_y</span> <span class="o">=</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_gaze_point_on_display_area&#39;</span><span class="p">]</span>
+            <span class="n">right_gaze_x</span><span class="p">,</span> <span class="n">right_gaze_y</span> <span class="o">=</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_gaze_point_on_display_area&#39;</span><span class="p">]</span>
+    
+            <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="k">if</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">left_gaze_x</span><span class="p">,</span> <span class="n">left_gaze_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eyeTrackerToDisplayCoords</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">left_gaze_x</span><span class="p">,</span> <span class="n">left_gaze_y</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">status</span> <span class="o">+=</span> <span class="mi">20</span>
+                
+            <span class="k">if</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">right_gaze_x</span><span class="p">,</span> <span class="n">right_gaze_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_eyeTrackerToDisplayCoords</span><span class="p">(</span>
+                    <span class="p">(</span><span class="n">right_gaze_x</span><span class="p">,</span> <span class="n">right_gaze_y</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">status</span> <span class="o">+=</span> <span class="mi">2</span>                
+
+            <span class="n">right_gx</span><span class="p">,</span> <span class="n">right_gy</span><span class="p">,</span> <span class="n">right_gz</span> <span class="o">=</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_gaze_origin_in_user_coordinate_system&#39;</span><span class="p">]</span>
+            <span class="n">left_gx</span><span class="p">,</span> <span class="n">left_gy</span><span class="p">,</span> <span class="n">left_gz</span> <span class="o">=</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_gaze_origin_in_user_coordinate_system&#39;</span><span class="p">]</span>
+
+            <span class="n">confidenceInterval</span> <span class="o">=</span> <span class="mf">0.0</span>
+            <span class="n">binocSample</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>  <span class="c1"># device id (not currently used)</span>
+                <span class="n">Device</span><span class="o">.</span><span class="n">_getNextEventID</span><span class="p">(),</span>
+                <span class="n">event_type</span><span class="p">,</span>
+                <span class="n">device_event_time</span><span class="p">,</span>
+                <span class="n">logged_time</span><span class="p">,</span>
+                <span class="n">iohub_event_time</span><span class="p">,</span>
+                <span class="n">confidenceInterval</span><span class="p">,</span>
+                <span class="n">data_delay</span><span class="p">,</span>
+                <span class="mi">0</span><span class="p">,</span>  <span class="c1"># filtered id (always 0 right now)</span>
+                <span class="n">left_gaze_x</span><span class="p">,</span>
+                <span class="n">left_gaze_y</span><span class="p">,</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>
+                <span class="n">left_gx</span><span class="p">,</span>
+                <span class="n">left_gy</span><span class="p">,</span>
+                <span class="n">left_gz</span><span class="p">,</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left Eye Angle x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left Eye Angle y</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left Camera Sensor position x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left Camera Sensor position y</span>
+                <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_pupil_diameter&#39;</span><span class="p">],</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">PUPIL_DIAMETER_MM</span><span class="p">,</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left pupil size measure 2</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left pupil size measure 2 type</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left PPD x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left PPD y</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left velocity x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left velocity y</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Left velocity xy</span>
+                <span class="n">right_gaze_x</span><span class="p">,</span>
+                <span class="n">right_gaze_y</span><span class="p">,</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right Eye Angle z</span>
+                <span class="n">right_gx</span><span class="p">,</span>
+                <span class="n">right_gy</span><span class="p">,</span>
+                <span class="n">right_gz</span><span class="p">,</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right Eye Angle x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right Eye Angle y</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right Camera Sensor position x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right Camera Sensor position y</span>
+                <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_pupil_diameter&#39;</span><span class="p">],</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">PUPIL_DIAMETER_MM</span><span class="p">,</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right pupil size measure 2</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right pupil size measure 2 type</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right PPD x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># Right PPD y</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># right velocity x</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># right velocity y</span>
+                <span class="n">EyeTrackerConstants</span><span class="o">.</span><span class="n">UNDEFINED</span><span class="p">,</span>  <span class="c1"># right velocity xy</span>
+                <span class="n">status</span>
+            <span class="p">]</span>
+    
+            <span class="bp">self</span><span class="o">.</span><span class="n">_latest_sample</span> <span class="o">=</span> <span class="n">binocSample</span>
+    
+            <span class="k">if</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">elif</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span> <span class="o">=</span> <span class="p">[(</span><span class="n">right_gaze_x</span> <span class="o">+</span> <span class="n">left_gaze_x</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">,</span>
+                                              <span class="p">(</span><span class="n">right_gaze_y</span> <span class="o">+</span> <span class="n">left_gaze_y</span><span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;left_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span> <span class="o">=</span> <span class="p">[</span><span class="n">left_gaze_x</span><span class="p">,</span> <span class="n">left_gaze_y</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="n">eye_data_event</span><span class="p">[</span><span class="s1">&#39;right_gaze_point_validity&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_latest_gaze_position</span> <span class="o">=</span> <span class="p">[</span><span class="n">right_gaze_x</span><span class="p">,</span> <span class="n">right_gaze_y</span><span class="p">]</span>
+    
+            <span class="bp">self</span><span class="o">.</span><span class="n">_last_callback_time</span> <span class="o">=</span> <span class="n">logged_time</span>
+    
+            <span class="k">return</span> <span class="n">binocSample</span>
+        <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+            <span class="n">printExceptionDetailsToStdErr</span><span class="p">()</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_eyeTrackerToDisplayCoords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">eyetracker_point</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts Tobii gaze positions to the Display device coordinate</span>
+<span class="sd">        space.&quot;&quot;&quot;</span>
+        <span class="n">gaze_x</span><span class="p">,</span> <span class="n">gaze_y</span> <span class="o">=</span> <span class="n">eyetracker_point</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_device</span><span class="o">.</span><span class="n">getCoordBounds</span><span class="p">()</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span> <span class="o">-</span> <span class="n">bottom</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">left</span> <span class="o">+</span> <span class="n">w</span> <span class="o">*</span> <span class="n">gaze_x</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">gaze_y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_displayToEyeTrackerCoords</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">display_x</span><span class="p">,</span> <span class="n">display_y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Converts a Display device point to Tobii gaze position coordinate</span>
+<span class="sd">        space.&quot;&quot;&quot;</span>
+        <span class="n">left</span><span class="p">,</span> <span class="n">top</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">bottom</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_display_device</span><span class="o">.</span><span class="n">getCoordBounds</span><span class="p">()</span>
+        <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">right</span> <span class="o">-</span> <span class="n">left</span><span class="p">,</span> <span class="n">top</span> <span class="o">-</span> <span class="n">bottom</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">left</span> <span class="o">-</span> <span class="n">display_x</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="p">,</span> <span class="p">(</span><span class="n">top</span> <span class="o">-</span> <span class="n">display_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">h</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">EyeTracker</span><span class="o">.</span><span class="n">_tobii</span><span class="p">:</span>
+            <span class="n">EyeTracker</span><span class="o">.</span><span class="n">_tobii</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+            <span class="n">EyeTracker</span><span class="o">.</span><span class="n">_tobii</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">EyeTrackerDevice</span><span class="o">.</span><span class="n">_close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span></div>
+
+</pre></div>
+
+</div>
+<div class="col-md-12 content">
+  <br/><a href="#" class="pull-right">Back to top</a>
+</div>
+<footer class="footer">
+  <div class="container">
+    <span class="pull-right">
+      
+        
+      <br/>
+
+          &copy; 2002-2018 <a href="https://www.peirce.org.uk/">Jonathan Peirce</a><br/>
+          &copy; 2019 <a href="https://opensciencetools.org/">Open Science Tools Ltd.</a><br/><br/>
+        PsychoPy<sup>®</sup> and Pavlovia<sup>®</sup> are registered trademarks of Open Science Tools Ltd.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/><br/>
+    </span>
+
+    <a href="http://www.nottingham.ac.uk/"><img src="../../../../_static/UoN_Supported_RGB.png", alt="Uni of Nottingham" width=200></a>
+  </div>
+
+</footer>
+  </body>
+</html>

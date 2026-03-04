@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="../../">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tobii &#8212; PsychoPy Eyetracker SR Research Plugin 0.0.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=536c50fe" />
+    <link rel="stylesheet" type="text/css" href="../../_static/psychopy.css?v=6c31395e" />
+    <script src="../../_static/documentation_options.js?v=d20be8f5"></script>
+    <script src="../../_static/doctools.js?v=b682be12"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script src="../../_static/js/jquery-fix.js"></script>
+    <script src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex/" />
+    <link rel="search" title="Search" href="../../search/" />
+    <link rel="prev" title="Welcome to psychopy-eyetracker-tobii’s documentation!" href="../../" />
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-96LHQFPY1F"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-96LHQFPY1F');
+    </script>
+
+    <!-- News reel -->
+     <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // get all news reels
+        for (let reel of document.getElementsByClassName("news-reel")) {
+          // get all cards
+          let cards = Array.from(reel.getElementsByClassName("sd-card"))
+          // start off with the first card
+          reel.showItem = 0;
+          // define function to show the next node
+          let update = () => {
+            for (let item of cards) {
+              // get index
+              let index = cards.indexOf(item);
+              // show/hide according to index match
+              if (index === reel.showItem) {
+                console.log("Showing news item:", item)
+                item.style.display = "block";
+              } else {
+                item.style.display = "none";
+              }
+            }
+            // iterate shown index
+            reel.showItem += 1;
+            if (reel.showItem >= cards.length) {
+              reel.showItem -= cards.length;
+            }
+          }
+          // run once now
+          update()
+          // schedule to run every 5s
+          window.setInterval(update, 5000);
+        }
+      }, false);    
+     </script>
+
+    <!-- Matomo -->
+    <script>
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+      _paq.push(["setCookieDomain", "*.psychopy.org"]);
+      _paq.push(["setDomains", ["*.psychopy.org","*.discourse.psychopy.org"]]);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u="//analytics.opensciencetools.org/";
+        _paq.push(['setTrackerUrl', u+'matomo.php']);
+        _paq.push(['setSiteId', '3']);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="//analytics.opensciencetools.org/matomo.php?idsite=3&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <!-- End Matomo Code -->
+
+
+  </head><body>
+  
+    <!-- nav bar -->
+
+  <div id="navbar" class="navbar navbar-default navbar-fixed-top" height="65px">
+    <div class="container">
+      <!-- brand logo -->
+      <a class="navbar-brand" href="../../">
+        
+        <img src="../../_static/navbar_plugin.png" alt="PsychoPy Logo">
+        
+      </a>
+      <!-- gap between logo and links -->
+      <div style="flex-grow: 1;"></div>
+      <!-- nav links -->
+      <div class="collapse navbar-collapse nav-collapse w-100 pull-right">
+        <ul class="nav navbar-nav ml-auto">
+          
+          
+            
+<!-- insert a regular link -->
+<li>
+    <a href="../../download/">
+        Install
+    </a>
+</li>
+
+
+          
+          
+          
+          <li><a href="https://plugins.psychopy.org/directory.html" class="return-btn">plugins.psychopy.org</a></li>
+          
+        </ul>
+      </div>
+      <!-- shown when screen is too small for full links, clicking it toggles links shown -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+  </div>
+
+<!--
+
+   -->
+
+<!-- social media icon bar -->
+
+<div class="social-bar">
+
+<a href="https://github.com/psychopy/psychopy" class="github">
+    <i class="fab fa-github"></i>
+</a>
+
+<a href="https://bsky.app/profile/psychopy.org" class="bluesky">
+    <i class="fab fa-bluesky"></i>
+</a>
+
+<a href="https://www.youtube.com/watch?v=VV6qhuQgsiI&list=PLFB5A1BE51964D587" class="youtube">
+    <i class="fab fa-youtube"></i>
+</a>
+
+<a href="https://www.facebook.com/PsychoPy/" class="facebook">
+    <i class="fab fa-facebook"></i>
+</a>
+
+<a href="https://www.linkedin.com/company/open-science-tools" class="linkedin">
+    <i class="fab fa-linkedin"></i>
+</a>
+
+<a href="https://twitter.com/psychopy" class="twitter">
+    <i class="fab fa-x-twitter"></i>
+</a>
+
+</div>
+
+  
+
+<main>
+  
+  <section id="tobii">
+<h1>Tobii<a class="headerlink" href="#tobii" title="Link to this heading">¶</a></h1>
+<p><strong>Platforms:</strong></p>
+<ul class="simple">
+<li><p>Windows 7 / 10</p></li>
+<li><p>Linux</p></li>
+<li><p>macOS</p></li>
+</ul>
+<p><strong>Required Python Version:</strong></p>
+<ul class="simple">
+<li><p>Python 3.6 +</p></li>
+</ul>
+<p><strong>Supported Models:</strong></p>
+<p>Tobii Pro eye tracker models that can use the tobii_research Python package.
+For a complete list please visit
+<a class="reference external" href="http://developer.tobiipro.com/tobiiprosdk/supportedeyetrackers.html">Tobii support</a>.</p>
+<section id="additional-software-requirements">
+<h2>Additional Software Requirements<a class="headerlink" href="#additional-software-requirements" title="Link to this heading">¶</a></h2>
+<p>To use the ioHub interface for Tobii, the Tobi Pro SDK must be installed
+in your Python environment. If a recent standalone installation of <a href="#id1"><span class="problematic" id="id2">|PsychoPy|</span></a>,
+this package should already be included.</p>
+<p>To install tobii-research type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">tobii</span><span class="o">-</span><span class="n">research</span>
+</pre></div>
+</div>
+</section>
+<section id="eyetracker-class">
+<h2>EyeTracker Class<a class="headerlink" href="#eyetracker-class" title="Link to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">psychopy.iohub.devices.eyetracker.hw.tobii.</span></span><span class="sig-name descname"><span class="pre">EyeTracker</span></span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker" title="Link to this definition">¶</a></dt>
+<dd><p>To start iohub with a Tobii eye tracker device, add the Tobii
+device to the dictionary passed to launchHubServer or the
+experiment’s iohub_config.yaml:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">eyetracker</span><span class="o">.</span><span class="n">hw</span><span class="o">.</span><span class="n">tobii</span><span class="o">.</span><span class="n">EyeTracker</span>
+</pre></div>
+</div>
+<p class="rubric">Examples</p>
+<ol class="upperalpha">
+<li><p>Start ioHub with a Tobii device and run tracker calibration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.iohub</span><span class="w"> </span><span class="kn">import</span> <span class="n">launchHubServer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">psychopy.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">getTime</span><span class="p">,</span> <span class="n">wait</span>
+
+<span class="n">iohub_config</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;eyetracker.hw.tobii.EyeTracker&#39;</span><span class="p">:</span>
+    <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;tracker&#39;</span><span class="p">,</span> <span class="s1">&#39;runtime_settings&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;sampling_rate&#39;</span><span class="p">:</span> <span class="mi">120</span><span class="p">}}}</span>
+
+<span class="n">io</span> <span class="o">=</span> <span class="n">launchHubServer</span><span class="p">(</span><span class="o">**</span><span class="n">iohub_config</span><span class="p">)</span>
+
+<span class="c1"># Get the eye tracker device.</span>
+<span class="n">tracker</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">devices</span><span class="o">.</span><span class="n">tracker</span>
+
+<span class="c1"># run eyetracker calibration</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">tracker</span><span class="o">.</span><span class="n">runSetupProcedure</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+<li><p>Print all eye tracker events received for 2 seconds:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check for and print any eye tracker events received...</span>
+<span class="n">tracker</span><span class="o">.</span><span class="n">setRecordingState</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">stime</span> <span class="o">=</span> <span class="n">getTime</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">getTime</span><span class="p">()</span><span class="o">-</span><span class="n">stime</span> <span class="o">&lt;</span> <span class="mf">2.0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">tracker</span><span class="o">.</span><span class="n">getEvents</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Print current eye position for 5 seconds:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check for and print current eye position every 100 msec.</span>
+<span class="n">stime</span> <span class="o">=</span> <span class="n">getTime</span><span class="p">()</span>
+<span class="k">while</span> <span class="n">getTime</span><span class="p">()</span><span class="o">-</span><span class="n">stime</span> <span class="o">&lt;</span> <span class="mf">5.0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tracker</span><span class="o">.</span><span class="n">getPosition</span><span class="p">())</span>
+    <span class="n">wait</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">tracker</span><span class="o">.</span><span class="n">setRecordingState</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Stop the ioHub Server</span>
+<span class="n">io</span><span class="o">.</span><span class="n">quit</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.clearEvents">
+<span class="sig-name descname"><span class="pre">clearEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filter_id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">call_proc_events</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.clearEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Clears any DeviceEvents that have occurred since the last call to
+the device’s getEvents(), or clearEvents() methods.</p>
+<p>Note that calling clearEvents() at the device level only clears the
+given device’s event buffer. The ioHub Process’s Global Event Buffer
+is unchanged.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.enableEventReporting">
+<span class="sig-name descname"><span class="pre">enableEventReporting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker.enableEventReporting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.enableEventReporting" title="Link to this definition">¶</a></dt>
+<dd><p>enableEventReporting is functionally identical to the eye tracker
+device specific enableEventReporting method.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getConfiguration">
+<span class="sig-name descname"><span class="pre">getConfiguration</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getConfiguration" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve the configuration settings information used to create the
+device instance. This will the default settings for the device, found
+in iohub.devices.&lt;device_name&gt;.default_&lt;device_name&gt;.yaml, updated
+with any device settings provided via launchHubServer(…).</p>
+<p>Changing any values in the returned dictionary has no effect
+on the device state.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The dictionary of the device configuration settings used
+to create the device.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getEvents">
+<span class="sig-name descname"><span class="pre">getEvents</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getEvents" title="Link to this definition">¶</a></dt>
+<dd><p>Retrieve any DeviceEvents that have occurred since the last call to
+the device’s getEvents() or clearEvents() methods.</p>
+<p>Note that calling getEvents() at a device level does not change the Global Event Buffer’s
+contents.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>event_type_id</strong> (<em>int</em>) – If specified, provides the ioHub DeviceEvent ID for which events</p></li>
+<li><p><strong>ID</strong> (<em>should be returned for.  Events that have occurred but do not match the event</em>)</p></li>
+<li><p><strong>class;</strong> (<em>specified are ignored. Event type ID's can be accessed via the EventConstants</em>)</p></li>
+<li><p><strong>EventConstants.</strong> (<em>all available event types are class attributes of</em>)</p></li>
+<li><p><strong>clearEvents</strong> (<em>int</em>) – Can be used to indicate if the events being returned should also be</p></li>
+<li><p><strong>True</strong> (<em>removed from the device event buffer.</em>)</p></li>
+<li><p><strong>buffer.</strong> (<em>being returned. False results in events being left in the device event</em>)</p></li>
+<li><p><strong>asType</strong> (<em>str</em>) – Optional kwarg giving the object type to return events as. Valid values</p></li>
+<li><p><strong>'namedtuple'</strong> (<em>are</em>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>New events that the ioHub has received since the last getEvents() or clearEvents()
+call to the device. Events are ordered by the ioHub time of each event, older event at
+index 0. The event object type is determined by the asType parameter passed to the method.
+By default a namedtuple object is returned for each event.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(list)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getLastGazePosition">
+<span class="sig-name descname"><span class="pre">getLastGazePosition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker.getLastGazePosition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getLastGazePosition" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the latest 2D eye gaze position retrieved from the Tobii
+device. This represents where the eye tracker is reporting each eye
+gaze vector is intersecting the calibrated surface.</p>
+<p>In general, the y or vertical component of each eyes gaze position should
+be the same value, since in typical user populations the two eyes are
+yoked vertically when they move. Therefore any difference between the
+two eyes in the y dimension is likely due to eye tracker error.</p>
+<p>Differences between the x, or horizontal component of the gaze position,
+indicate that the participant is being reported as looking behind or
+in front of the calibrated plane. When a user is looking at the
+calibration surface , the x component of the two eyes gaze position should be the same.
+Differences between the x value for each eye either indicates that the
+user is not focussing at the calibrated depth, or that there is error in the eye data.</p>
+<p>The above remarks are true for any eye tracker in general.</p>
+<p>The getLastGazePosition method returns the most recent eye gaze position
+retrieved from the eye tracker device. This is the position on the
+calibrated 2D surface that the eye tracker is reporting as the current
+eye position. The units are in the units in use by the Display device.</p>
+<p>If binocular recording is being performed, the average position of both
+eyes is returned.</p>
+<p>If no samples have been received from the eye tracker, or the
+eye tracker is not currently recording data, None is returned.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>If the eye tracker is not currently recording data or no eye samples have been received.</p>
+<p>tuple: Latest (gaze_x,gaze_y) position of the eye(s)</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getLastSample">
+<span class="sig-name descname"><span class="pre">getLastSample</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker.getLastSample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getLastSample" title="Link to this definition">¶</a></dt>
+<dd><p>Returns the latest sample retrieved from the Tobii device. The Tobii
+system always using the BinocularSample Event type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>If the eye tracker is not currently recording data.</p>
+<p>EyeSample: If the eye tracker is recording in a monocular tracking mode, the latest sample event of this event type is returned.</p>
+<p>BinocularEyeSample:  If the eye tracker is recording in a binocular tracking mode, the latest sample event of this event type is returned.</p>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getPosition">
+<span class="sig-name descname"><span class="pre">getPosition</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.getPosition" title="Link to this definition">¶</a></dt>
+<dd><p>See getLastGazePosition().</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.isRecordingEnabled">
+<span class="sig-name descname"><span class="pre">isRecordingEnabled</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker.isRecordingEnabled"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.isRecordingEnabled" title="Link to this definition">¶</a></dt>
+<dd><p>isRecordingEnabled returns the recording state from the eye tracking
+device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>None</strong></p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True == the device is recording data; False == Recording is not occurring</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.runSetupProcedure">
+<span class="sig-name descname"><span class="pre">runSetupProcedure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calibration_args</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker.runSetupProcedure"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.runSetupProcedure" title="Link to this definition">¶</a></dt>
+<dd><p>runSetupProcedure performs a calibration routine for the Tobii eye
+tracking system.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.setRecordingState">
+<span class="sig-name descname"><span class="pre">setRecordingState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">recording</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy_eyetracker_tobii/tobii/eyetracker/#EyeTracker.setRecordingState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.hw.tobii.EyeTracker.setRecordingState" title="Link to this definition">¶</a></dt>
+<dd><p>setRecordingState is used to start or stop the recording of data
+from the eye tracking device.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>recording</strong> (<em>bool</em>) – if True, the eye tracker will start recordng available
+eye data and sending it to the experiment program if data streaming
+was enabled for the device. If recording == False, then the eye
+tracker stops recording eye data and streaming it to the experiment.</p>
+</dd>
+</dl>
+<p>If the eye tracker is already recording, and setRecordingState(True) is
+called, the eye tracker will simple continue recording and the method call
+is a no-op. Likewise if the system has already stopped recording and
+setRecordingState(False) is called again.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>recording</strong> (<em>bool</em>) – if True, the eye tracker will start recordng data.; false = stop recording data.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>the current recording state of the eye tracking device</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="supported-event-types">
+<h2>Supported Event Types<a class="headerlink" href="#supported-event-types" title="Link to this heading">¶</a></h2>
+<p>tobii_research provides real-time access to binocular sample data.</p>
+<p>The following fields of the ioHub BinocularEyeSample event are supported:</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">psychopy.iohub.devices.eyetracker.</span></span><span class="sig-name descname"><span class="pre">BinocularEyeSampleEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/psychopy/iohub/devices/eyetracker/eye_events/#BinocularEyeSampleEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent" title="Link to this definition">¶</a></dt>
+<dd><p>The BinocularEyeSampleEvent event represents the eye position and eye
+attribute data collected from one frame or reading of an eye tracker device
+that is recording both eyes of a participant.</p>
+<p>Event Type ID: EventConstants.BINOCULAR_EYE_SAMPLE</p>
+<p>Event Type String: ‘BINOCULAR_EYE_SAMPLE’</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.time">
+<span class="sig-name descname"><span class="pre">time</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.time" title="Link to this definition">¶</a></dt>
+<dd><p>time of event, in sec.msec format, using psychopy timebase.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_gaze_x">
+<span class="sig-name descname"><span class="pre">left_gaze_x</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_gaze_x" title="Link to this definition">¶</a></dt>
+<dd><p>The horizontal position of the left eye on the computer screen,
+in Display Coordinate Type Units. Calibration must be done prior
+to reading (meaningful) gaze data.
+Uses tobii_research gaze data ‘left_gaze_point_on_display_area’[0] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_gaze_y">
+<span class="sig-name descname"><span class="pre">left_gaze_y</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_gaze_y" title="Link to this definition">¶</a></dt>
+<dd><p>The vertical position of the left eye on the computer screen,
+in Display Coordinate Type Units. Calibration must be done prior
+to reading (meaningful) gaze data.
+Uses tobii_research gaze data ‘left_gaze_point_on_display_area’[1] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_eye_cam_x">
+<span class="sig-name descname"><span class="pre">left_eye_cam_x</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_eye_cam_x" title="Link to this definition">¶</a></dt>
+<dd><p>The left x eye position in the eye trackers 3D coordinate space.
+Uses tobii_research gaze data ‘left_gaze_origin_in_trackbox_coordinate_system’[0] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_eye_cam_y">
+<span class="sig-name descname"><span class="pre">left_eye_cam_y</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_eye_cam_y" title="Link to this definition">¶</a></dt>
+<dd><p>The left y eye position in the eye trackers 3D coordinate space.
+Uses tobii_research gaze data ‘left_gaze_origin_in_trackbox_coordinate_system’[1] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_eye_cam_z">
+<span class="sig-name descname"><span class="pre">left_eye_cam_z</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_eye_cam_z" title="Link to this definition">¶</a></dt>
+<dd><p>The left z eye position in the eye trackers 3D coordinate space.
+Uses tobii_research gaze data ‘left_gaze_origin_in_trackbox_coordinate_system’[2] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_pupil_measure_1">
+<span class="sig-name descname"><span class="pre">left_pupil_measure_1</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.left_pupil_measure_1" title="Link to this definition">¶</a></dt>
+<dd><p>Left eye pupil diameter in mm.
+Uses tobii_research gaze data ‘left_pupil_diameter’ field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_gaze_x">
+<span class="sig-name descname"><span class="pre">right_gaze_x</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_gaze_x" title="Link to this definition">¶</a></dt>
+<dd><p>The horizontal position of the right eye on the computer screen,
+in Display Coordinate Type Units. Calibration must be done prior
+to reading (meaningful) gaze data.
+Uses tobii_research gaze data ‘right_gaze_point_on_display_area’[0] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_gaze_y">
+<span class="sig-name descname"><span class="pre">right_gaze_y</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_gaze_y" title="Link to this definition">¶</a></dt>
+<dd><p>The vertical position of the right eye on the computer screen,
+in Display Coordinate Type Units. Calibration must be done prior
+to reading (meaningful) gaze data.
+Uses tobii_research gaze data ‘right_gaze_point_on_display_area’[1] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_eye_cam_x">
+<span class="sig-name descname"><span class="pre">right_eye_cam_x</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_eye_cam_x" title="Link to this definition">¶</a></dt>
+<dd><p>The right x eye position in the eye trackers 3D coordinate space.
+Uses tobii_research gaze data ‘right_gaze_origin_in_trackbox_coordinate_system’[0] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_eye_cam_y">
+<span class="sig-name descname"><span class="pre">right_eye_cam_y</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_eye_cam_y" title="Link to this definition">¶</a></dt>
+<dd><p>The right y eye position in the eye trackers 3D coordinate space.
+Uses tobii_research gaze data ‘right_gaze_origin_in_trackbox_coordinate_system’[1] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_eye_cam_z">
+<span class="sig-name descname"><span class="pre">right_eye_cam_z</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_eye_cam_z" title="Link to this definition">¶</a></dt>
+<dd><p>The right z eye position in the eye trackers 3D coordinate space.
+Uses tobii_research gaze data ‘right_gaze_origin_in_trackbox_coordinate_system’[2] field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_pupil_measure_1">
+<span class="sig-name descname"><span class="pre">right_pupil_measure_1</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.right_pupil_measure_1" title="Link to this definition">¶</a></dt>
+<dd><p>Right eye pupil diameter in mm.
+Uses tobii_research gaze data ‘right_pupil_diameter’ field.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.status">
+<span class="sig-name descname"><span class="pre">status</span></span><a class="headerlink" href="#psychopy.iohub.devices.eyetracker.BinocularEyeSampleEvent.status" title="Link to this definition">¶</a></dt>
+<dd><p>Indicates if eye sample contains ‘valid’ data for left and right eyes.
+0 = Eye sample is OK.
+2 = Right eye data is likely invalid.
+20 = Left eye data is likely invalid.
+22 = Eye sample is likely invalid.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="default-device-settings">
+<h2>Default Device Settings<a class="headerlink" href="#default-device-settings" title="Link to this heading">¶</a></h2>
+<p><strong>Last Updated:</strong> January, 2021</p>
+</section>
+</section>
+
+
+</div>
+<div class="col-md-12 content">
+  <br/><a href="#" class="pull-right">Back to top</a>
+</div>
+<footer class="footer">
+  <div class="container">
+    <span class="pull-right">
+      
+        
+<div id="sourcelink">
+  <a href="https://github.com/psychopy/psychopy/blob/master/docs/source/coder/tobii.rst"
+     rel="nofollow">Source</a>
+</div>
+      <br/>
+
+          &copy; 2002-2018 <a href="https://www.peirce.org.uk/">Jonathan Peirce</a><br/>
+          &copy; 2019 <a href="https://opensciencetools.org/">Open Science Tools Ltd.</a><br/><br/>
+        PsychoPy<sup>®</sup> and Pavlovia<sup>®</sup> are registered trademarks of Open Science Tools Ltd.<br/>
+        Created using <a href="http://sphinx-doc.org/">Sphinx</a> 8.1.3.<br/><br/>
+    </span>
+
+    <a href="http://www.nottingham.ac.uk/"><img src="../../_static/UoN_Supported_RGB.png", alt="Uni of Nottingham" width=200></a>
+  </div>
+
+</footer>
+  </body>
+</html>
